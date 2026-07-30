@@ -3,11 +3,10 @@ def check_palindrome(n):
     def helper(n):
         k = 0
         while n > 0:
-            t = n % 10
             if k == 0:
-                k = t
+                k = n % 10
             else:
-                k = k * 10 + t
+                k = k * 10 + n % 10
             n = n // 10
 
         return k
@@ -15,5 +14,5 @@ def check_palindrome(n):
         print("palindrome")
     else:
         print("not palidrome")
-n = 123432
+n = 1234321
 check_palindrome(n)
