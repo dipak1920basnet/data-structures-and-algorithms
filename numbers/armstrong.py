@@ -27,3 +27,20 @@ def approach_one(n):
 
 print(approach_one(153))
 print(approach_one(1634))
+
+
+def approach_two(n):
+    t = str(n)
+    power = len(t)
+    total = 0
+    for i in t:
+        total += int(i)**power
+    if n == total:
+        check = True
+    else: 
+        check = False
+    return power, total, check
+
+print(approach_two(153))
+print(approach_two(1634))
+print(approach_two(169))
