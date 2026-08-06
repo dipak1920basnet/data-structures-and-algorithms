@@ -43,5 +43,15 @@ def Bubble_sort(n, reverse:bool = False):
     return Bubble_sort_asc(n)
 
 n = [5,8,1,6,9,2,4]
-# n = [2,1]
-print(Bubble_sort(n))
+n = [2,1]
+# print(Bubble_sort(n))
+
+
+def Bubble_for_asc(n):
+    for i in range(len(n)):
+        for j in range(1,len(n)-i):
+            if n[j] < n[j-1]:
+                n[j-1], n[j] = n[j], n[j-1]
+    print(n)
+
+Bubble_for_asc(n)
