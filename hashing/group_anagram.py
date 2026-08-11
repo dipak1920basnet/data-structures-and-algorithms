@@ -11,22 +11,37 @@ def groupAnagrams(strs: list[str]) -> list[list[str]]:
     grouped_anagram = []
     idx_track = []
     for i in range(len(strs)):
-        groups = []
-        if i not in idx_track:
-            first = strs[i]
-            idx_track.append(i)
-            groups.append(first)
-            for j in range(i+1,len(strs)):
-                if j not in idx_track:
-                    second = strs[j]
-                    if helper(first, second):
-                        groups.append(second)
-                        idx_track.append(j)
-        if len(groups) > 0:
-            grouped_anagram.append(groups)
+        if i in idx_track:
+            continue
+        groups = [strs[i]]
+        idx_track.append(i)
+        for j in range(i+1,len(strs)):
+            if j in idx_track:
+                continue
+            second = strs[j]
+            if helper(strs[i], second):
+                groups.append(second)
+                idx_track.append(j)
+        grouped_anagram.append(groups)
     return grouped_anagram
 
 strs = ["eat","tea","tan","ate","nat","bat"]
-strs = [""]
-strs = ["a"]
-print(groupAnagrams(strs))
+# # strs = [""]
+# # strs = ["a"]
+# print(groupAnagrams(strs))
+
+
+
+
+
+# Alternate methods:
+def group_ana(strs: list[str]) -> list[list[str]]:
+
+    grouped_ana = dict()
+    for i in strs:
+        val = "".join(sorted(i))
+        grouped_ana[val] = grouped_ana.get(val,[])
+        grouped_ana[val].append(i)
+    return [value for value in grouped_ana.values()]
+
+print(group_ana(strs))
