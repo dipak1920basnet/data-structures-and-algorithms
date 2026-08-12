@@ -10,7 +10,17 @@ def removeDuplicates(nums: list[int]) -> int:
         right += 1
     return count
 
+# using dict
+def removeduplicates(nums: list[int]) -> int:
+    hash_table = dict()
+    for i in nums:
+        hash_table[i] = hash_table.get(i,0)
+    count = 0
+    for i in hash_table.keys():
+        nums[count] = i
+        count += 1
+    return count
 nums = [1,1,2]
-# nums = [0,0,1,1,1,2,2,3,3,4]
-# nums = [1,2,3]
-print(removeDuplicates(nums))
+nums = [0,0,1,1,1,2,2,3,3,4]
+nums = [1,2,3]
+print(removeduplicates(nums))
